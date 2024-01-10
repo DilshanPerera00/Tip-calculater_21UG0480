@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16pt"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Tip Calculator"
+        android:textAlignment="center"
+        android:textColor="#673AB7"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <Spinner
+        android:id="@+id/currencySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:entries="@array/currency_options"
+        android:prompt="@string/select_currency"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic"
+        />
+
+    <EditText
+        android:id="@+id/cost_of_service"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:hint="Bill Amount"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/currencySpinner" />
+
+    <TextView
+        android:id="@+id/service_questions"
+        android:text="How was the Service?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cost_of_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <RadioGroup
+        android:id="@+id/tip_options"
+        android:layout_width="305dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@id/option_fifteen_percent"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/service_questions">
+
+
+        <RadioButton
+            android:id="@+id/option_fifteen_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(15%)"
+            android:textSize="16sp" />
+
+
+        <RadioButton
+            android:id="@+id/option_ten_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(10%)"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/option_five_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(5%)"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/option_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/customTipEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tip_options"
+        android:layout_below="@+id/tip_options"
+        android:layout_marginTop="8dp"
+        android:hint="Enter Custom Tip (%)"
+        android:inputType="numberDecimal"
+        android:visibility="gone" />
+
+    <Switch
+        android:id="@+id/round_up_switch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Round up tip?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/customTipEditText"
+        app:layout_constraintTop_toBottomOf="@+id/customTipEditText" />
+
+
+
+
+    <EditText
+        android:id="@+id/editTextNumberOfPeople"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:hint="Number of People"
+        android:inputType="number"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/round_up_switch" />/>
+
+    <Button
+        android:id="@+id/calculate_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Calculate"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNumberOfPeople" />
+
+    <TextView
+        android:id="@+id/tip_result"
+        android:layout_margin="16dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tip Amount"
+        app:layout_constraintTop_toBottomOf="@id/calculate_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/total_bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:text="Total Bill"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tip_result" />
+
+    <!-- Add this TextView for displaying the amount per person -->
+    <TextView
+        android:id="@+id/amountPerPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount Per Person"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_bill"
+ />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
