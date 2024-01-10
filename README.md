@@ -1,4 +1,4 @@
-# Tip Calculator -
+# Tip Calculator
 
 Solution code for the Android Basics in Kotlin: Tip Calculator app.
 
